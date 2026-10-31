@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "KZM mod.toml",
+  "type": "object",
+  "required": ["id", "name", "version"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+    "name": { "type": "string" },
+    "version": { "type": "string" },
+    "kzmSpec": { "type": "integer", "const": 1 },
+    "legacy": { "type": "boolean" },
+    "lua": {
+      "type": "object",
+      "properties": {
+        "sourceEntry": { "type": "string" },
+        "distEntry": { "type": "string" },
+        "priority": { "type": "integer" },
+        "hooks": { "type": "object" }
+      }
+    },
+    "native": {
+      "type": "object",
+      "properties": {
+        "plugins": { "type": "array", "items": { "type": "string" } }
+      }
+    }
+  }
+}

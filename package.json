@@ -1,0 +1,94 @@
+{
+  "name": "kzm-vsx",
+  "displayName": "KZM",
+  "description": "Katana Zero Modding — mod.toml, build & pack via kzm CLI",
+  "version": "1.0.0",
+  "license": "AGPL-3.0",
+  "publisher": "KatanaZeroModding",
+  "author": {
+    "name": "An1by",
+    "url": "https://github.com/an1by"
+  },
+  "sponsor": {
+    "url": "https://ko-fi.com/an1by"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/KatanaZeroModding/kzm-vsx"
+  },
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": ["Other"],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "kzm.initMod",
+        "title": "KZM: Init Mod"
+      },
+      {
+        "command": "kzm.newPlugin",
+        "title": "KZM: New Plugin"
+      },
+      {
+        "command": "kzm.build",
+        "title": "KZM: Build & Install"
+      },
+      {
+        "command": "kzm.pack",
+        "title": "KZM: Pack"
+      },
+      {
+        "command": "kzm.devLink",
+        "title": "KZM: Register Dev Mod"
+      }
+    ],
+    "configuration": {
+      "title": "KZM",
+      "properties": {
+        "kzm.cliPath": {
+          "type": "string",
+          "default": "kzm",
+          "description": "Path to kzm CLI binary"
+        },
+        "kzm.org": {
+          "type": "string",
+          "default": "KatanaZeroModding"
+        },
+        "kzm.apiJsonPath": {
+          "type": "string",
+          "default": ""
+        },
+        "kzm.repoRoot": {
+          "type": "string",
+          "default": "",
+          "description": "Path to KZM repo (for runtime Lua + kzm_host.dll). Sets KZM_REPO_ROOT for CLI."
+        },
+        "kzm.buildOnSave": {
+          "type": "boolean",
+          "default": true,
+          "description": "Run kzm build --install --enable when saving .lua / mod.toml"
+        }
+      }
+    },
+    "jsonValidation": [
+      {
+        "fileMatch": "mod.toml",
+        "url": "./schemas/mod.schema.json"
+      }
+    ]
+  },
+  "scripts": {
+    "compile": "tsc -p .",
+    "package": "vsce package --no-dependencies",
+    "watch": "tsc -watch -p ."
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/vscode": "^1.85.0",
+    "@vscode/vsce": "^3.0.0",
+    "typescript": "^5.3.0"
+  }
+}
