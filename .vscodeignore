@@ -1,5 +1,7 @@
 src/
 node_modules/
-out/
 *.vsix
-!schemas/
+.gitignore
+tsconfig.json
+scripts/
+.github/
